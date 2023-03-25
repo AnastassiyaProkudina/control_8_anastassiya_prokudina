@@ -1,7 +1,10 @@
-<div class="card" style="width: 18rem;">
+<div class="card m-3" style="width: 40rem;">
+  <div class="card-header">
+      <h6 class="card-subtitle mb-2 text-muted">Author: {{ review.author }}</h6>
+      <h6 class="card-subtitle mb-2 text-muted">Email: {{ review.author.email }}</h6>
+  </div>
     <div class="card-body">
         <h5 class="card-title">Grade: {{ review.grade }}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">Author: {{ review.author }}</h6>
         <p class="card-text">{{ review.text }}</p>
         {% if footer == 'review' %}
             <a class="btn btn-light m-1" href="{% url 'review_update' review.id %}" role="button">Edit</a>
