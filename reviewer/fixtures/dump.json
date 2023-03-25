@@ -4,7 +4,7 @@
   "pk": 1,
   "fields": {
     "title": "Meat",
-     "category": "food",
+    "category": "food",
     "description": "Fresh Meat in Store",
     "image": "https://vgmeats.ca/content/uploads/vgs-big-beef-sale-is-back.jpg",
     "created_at": "2023-02-24T03:58:45.012Z",
@@ -76,7 +76,7 @@
     "title": "Apple Watch",
     "category": "device",
     "description": "Смарт-часы Apple Watch SE, 40mm, Gold-Starlight",
-    "image": "https://static.shop.kz/upload/resize_cache/iblock/de0/c0g5m1jmyfw3i894dm9pd8ijfcic5mp8/450_450_1/164097o2.jpg",
+    "image": "https://static.shop.kz/upload/resize_cache/iblock/de0/c0g5m1jmyfw3i894dm9pd8ijfcic5mp8/450_450_1/164",
     "created_at": "2023-02-24T05:15:02.313Z",
     "updated_at": "2023-03-14T06:01:20.335Z",
     "is_deleted": true,
@@ -102,7 +102,7 @@
   "pk": 8,
   "fields": {
     "title": "Drops",
-     "category": "pharmacy",
+    "category": "pharmacy",
     "description": "Ear drops for pain",
     "image": "https://d11qgm9a5k858y.cloudfront.net/hiktgrnae1ac9oc86ruc5nmttdai",
     "created_at": "2023-02-27T09:22:26.534Z",
@@ -116,7 +116,7 @@
   "pk": 9,
   "fields": {
     "title": "zb",
-     "category": "car",
+    "category": "car",
     "description": "No Description",
     "image": "https://s.aolcdn.com/commerce/autodata/images/20MBGEA1.jpg",
     "created_at": "2023-02-27T10:31:11.510Z",
@@ -132,9 +132,9 @@
     "title": "Watch E",
     "category": "device",
     "description": "No Description",
-    "image": "https://xiaomi.kz/upload/resize_cache/webp/iblock/e66/325_325_1/il1ysddru0qqxaz3mbzn09f44df4unyx.webp",
+    "image": "https://www.smartwatchspex.com/wp-content/uploads/2019/06/mi-smart-band-4-black-version.jpg",
     "created_at": "2023-03-12T22:07:33.856Z",
-    "updated_at": "2023-03-13T01:21:42.262Z",
+    "updated_at": "2023-03-25T07:19:57.314Z",
     "is_deleted": false,
     "deleted_at": null
   }
@@ -160,9 +160,9 @@
     "title": "Citramon P",
     "category": "pharmacy",
     "description": "Цитрамон П Реневал, таблетки 10 шт\r\nПроизводитель: Обновление ПФК АО, Россия",
-    "image": "https://cdn.eapteka.ru/upload/offer_photo/235/755/resized/230_230_1_d1fa94d3f0576a4bd19818c4060d2ade.png?t=1671141394&_cvc=1678519280",
+    "image": "https://socialochka.ru/upload/iblock/ac0/ac0c7b3b72edbfb5032cd98d7f2cce0f.jpeg",
     "created_at": "2023-03-13T01:25:17.925Z",
-    "updated_at": "2023-03-13T01:25:17.925Z",
+    "updated_at": "2023-03-25T07:21:00.293Z",
     "is_deleted": false,
     "deleted_at": null
   }
@@ -174,11 +174,103 @@
     "title": "dbzdgv",
     "category": "other",
     "description": "No Description",
-    "image": "https://www.eapteka.ru/upload/offer_photo/235/755/1_d1fa94d3f0576a4bd19818c4060d2ade.png?t=1671141394",
+    "image": "https://www.eapteka.ru/upload/offer_photo/235/755/1_d1fa94d3f0576a4bd19818c4060d2ade.png?t=167114139",
     "created_at": "2023-03-13T01:27:10.617Z",
     "updated_at": "2023-03-13T01:27:18.029Z",
     "is_deleted": true,
     "deleted_at": "2023-03-13T01:27:18.029Z"
+  }
+},
+{
+  "model": "reviewer.product",
+  "pk": 14,
+  "fields": {
+    "title": "uhbiu",
+    "category": "other",
+    "description": "No Description",
+    "image": "static/img/Без названия.png",
+    "created_at": "2023-03-25T07:12:44.345Z",
+    "updated_at": "2023-03-25T07:18:22.239Z",
+    "is_deleted": true,
+    "deleted_at": "2023-03-25T07:18:22.239Z"
+  }
+},
+{
+  "model": "reviewer.product",
+  "pk": 15,
+  "fields": {
+    "title": "esrghr",
+    "category": "food",
+    "description": "No Description",
+    "image": "https://icon-library.com/images/none-icon/none-icon-1.jpg",
+    "created_at": "2023-03-25T07:17:15.348Z",
+    "updated_at": "2023-03-25T07:17:56.320Z",
+    "is_deleted": true,
+    "deleted_at": "2023-03-25T07:17:56.320Z"
+  }
+},
+{
+  "model": "reviewer.review",
+  "pk": 1,
+  "fields": {
+    "author": 1,
+    "product": 1,
+    "text": "Super! Puper!",
+    "grade": 5,
+    "created_at": "2023-03-25T13:36:02.130Z",
+    "updated_at": "2023-03-25T10:00:48.447Z",
+    "is_deleted": true,
+    "deleted_at": "2023-03-25T10:00:48.446Z"
+  }
+},
+{
+  "model": "reviewer.review",
+  "pk": 2,
+  "fields": {
+    "author": 1,
+    "product": 1,
+    "text": "It's fits for me",
+    "grade": 4,
+    "created_at": "2023-03-25T13:46:52.471Z",
+    "updated_at": "2023-03-25T13:47:13.853Z",
+    "is_deleted": false,
+    "deleted_at": null
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$390000$L2y6QIgT308mzqWgnWYYNq$Ji9TR62kBRrnTAsct7c5MWnbQHsLOqOgLUfJT/DyD1c=",
+    "last_login": "2023-03-25T13:07:48.555Z",
+    "is_superuser": true,
+    "username": "root",
+    "first_name": "",
+    "last_name": "",
+    "email": "root@root.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2023-03-25T07:37:06.380Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$390000$gAXF5N5u1bSkihgiyQ7aEi$Ner0W9GZEoZMDoErg27ec4EuWa3pr27xv+JVZlcn2ow=",
+    "last_login": "2023-03-25T11:58:39.197Z",
+    "is_superuser": false,
+    "username": "Ana",
+    "first_name": "Anastassiya",
+    "last_name": "",
+    "email": "anakess88@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2023-03-25T11:58:39.057Z",
+    "groups": [],
+    "user_permissions": []
   }
 }
 ]
