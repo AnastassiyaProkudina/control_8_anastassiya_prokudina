@@ -33,7 +33,7 @@ class Product(models.Model):
         default="No Description",
     )
     image = models.TextField(
-        max_length=2000, null=True, blank=True, verbose_name="Image"
+        max_length=2000, null=True, blank=True, verbose_name="Image", default="https://icon-library.com/images/none-icon/none-icon-1.jpg"
     )
     created_at = models.DateTimeField(
         auto_now_add=True, verbose_name="Date and time created"
