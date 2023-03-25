@@ -46,6 +46,9 @@
                     <li class="menu">
                         <a href="{% url 'reviewer:product_create' %}" class="nav-link">Add new</a>
                     </li>
+                    <li class="menu">
+                        <a href="{% url 'accounts:detail' request.user.pk %} " class="nav-link">Profile</a>
+                    </li>
                 {% endif %}
                 {% block menu %}{% endblock %}
             </ul>
