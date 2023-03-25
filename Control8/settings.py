@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django_bootstrap5",
     "reviewer",
+    "accounts"
 ]
 
 MIDDLEWARE = [
@@ -124,7 +125,7 @@ MEDIA_URL = "/uploads/"
 
 LOGIN_REDIRECT_URL = "reviewer:index"
 LOGOUT_REDIRECT_URL = "reviewer:index"
-LOGIN_URL = "login"
+LOGIN_URL = "accounts:login"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

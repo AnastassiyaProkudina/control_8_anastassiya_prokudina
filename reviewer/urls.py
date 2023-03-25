@@ -5,6 +5,9 @@ from reviewer.views.categories import categories_list, category
 from reviewer.views.products import *
 from reviewer.views.reviews import ReviewCreateView, ReviewDetailView, ReviewDeleteView, ReviewUpdateView
 
+
+app_name = "reviewer"
+
 urlpatterns = [
     path("", IndexView.as_view(), name="index"),
     path("product/", IndexRedirectView.as_view(), name="products_index_redirect"),

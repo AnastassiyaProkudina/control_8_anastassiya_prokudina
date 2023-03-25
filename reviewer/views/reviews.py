@@ -1,3 +1,5 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import redirect, get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.views.generic import CreateView, DetailView, UpdateView, DeleteView, TemplateView
@@ -6,7 +8,7 @@ from reviewer.forms import ReviewForm
 from reviewer.models import Review, Product
 
 
-class ReviewCreateView(CreateView):
+class ReviewCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     template_name = "products/product.html"
     model = Review
     form_class = ReviewForm
@@ -29,23 +31,25 @@ class ReviewDetailView(DetailView):
         return reverse("review_detail", kwargs={"pk": self.object.pk})
 
 
-class ReviewUpdateView(UpdateView):
+class ReviewUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     template_name = "reviews/review_update.html"
     model = Review
     form_class = ReviewForm
+    success_message = "Отзыв обновлен"
 
     def get_success_url(self):
         return reverse("review_detail", kwargs={"pk": self.object.pk})
 
 
-class ReviewDeleteView(DeleteView):
+class ReviewDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     template_name = "reviews/review_confirm_delete.html"
     model = Review
     success_url = reverse_lazy("index")
 
 
-class ReviewConfirmDeleteView(TemplateView):
+class ReviewConfirmDeleteView(LoginRequiredMixin, SuccessMessageMixin, TemplateView):
     template_name = "reviews/review_confirm_delete.html"
+    success_message = "Отзыв удален"
 
     def post(self, request, **kwargs):
         context = super().get_context_data(**kwargs)

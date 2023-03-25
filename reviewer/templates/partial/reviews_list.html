@@ -1,6 +1,6 @@
 {% for review in reviews %}
     <ul class="list-group mb-3">
-        <a href="{% url 'review_detail' review.pk %}" class="review-link">
+        <a href="{% url 'reviewer:review_detail' review.pk %}" class="review-link">
             <li class="list-group-item">Отзыв от: {{ review.author }}<br>{{ review }}...</li>
         </a>
     </ul>

@@ -1,3 +1,5 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.views.generic import (
@@ -28,16 +30,17 @@ class ProductDetail(DetailView):
         return context
 
 
-class ProductCreateView(CreateView):
+class ProductCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     template_name = "products/product_create.html"
     model = Product
     form_class = ProductForm
+    success_message = "Товар добавлен"
 
     def get_success_url(self):
         return reverse("product_detail", kwargs={"pk": self.object.pk})
 
 
-class ProductUpdateView(UpdateView):
+class ProductUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     template_name = "products/product_update.html"
     model = Product
     form_class = ProductForm
@@ -46,14 +49,15 @@ class ProductUpdateView(UpdateView):
         return reverse("product_detail", kwargs={"pk": self.object.pk})
 
 
-class ProductDeleteView(DeleteView):
+class ProductDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     template_name = "products/product_confirm_delete.html"
     model = Product
     success_url = reverse_lazy("index")
 
 
-class ProductConfirmDeleteView(TemplateView):
+class ProductConfirmDeleteView(LoginRequiredMixin, SuccessMessageMixin, TemplateView):
     template_name = "products/product_confirm_delete.html"
+    success_message = "Товар удален"
 
     def post(self, request, **kwargs):
         context = super().get_context_data(**kwargs)

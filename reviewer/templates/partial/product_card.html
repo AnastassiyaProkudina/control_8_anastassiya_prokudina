@@ -8,21 +8,28 @@
             <div class="card-body">
                 <p class="card-text">{{ product.title }}</p>
                 {% if footer == 'products' %}
-                    <a href="{% url 'product_detail' product.id %}" class="btn btn-outline-light m-1">See more>>></a>
+                    <a href="{% url 'reviewer:product_detail' product.id %}" class="btn btn-outline-light m-1">See more>>></a>
                 {% elif footer == 'product' %}
                     <p class="card-text">{{ product.description }}</p>
                     <p class="card-small-text">Added at: {{ product.created_at }}</p>
-                    <a class="btn btn-light m-1" href="{% url 'product_update' product.id %}" role="button">Edit</a>
-                    <a class="btn btn-dark m-1" href="{% url 'product_delete' product.id %}" role="button">Delete</a>
+                    {% if request.user.is_authenticated %}
+                        <a class="btn btn-light m-1" href="{% url 'reviewer:product_update' product.id %}" role="button">Edit</a>
+                        <a class="btn btn-dark m-1" href="{% url 'reviewer:product_delete' product.id %}"
+                           role="button">Delete</a>
+                    {% endif %}
                     <p class="card-text">Отзывы о данном товаре:</p>
                     {% include 'partial/reviews_list.html' with style='card-header' %}
-                    {% include 'partial/review_form.html' with style='card-header' %}
+                    {% if request.user.is_authenticated %}
+                        {% include 'partial/review_form.html' with style='card-header' %}
+{#                    {% endif %}#}
                 {% elif footer == 'delete' %}
-                    <form action="{% url 'product_confirm_delete' product.pk %}" method="post" class="form-inline">
+{#                    {% if request.user.is_authenticated %}#}
+                    <form action="{% url 'reviewer:product_confirm_delete' product.pk %}" method="post" class="form-inline">
                         {% csrf_token %}
                         <input type="submit" class="btn btn-dark" value="Delete">
-                        <a href="{% url 'index' %}" class="btn btn-light">Cancel</a>
+                        <a href="{% url 'reviewer:index' %}" class="btn btn-light">Cancel</a>
                     </form>
+                    {% endif %}
                 {% endif %}
             </div>
         </div>

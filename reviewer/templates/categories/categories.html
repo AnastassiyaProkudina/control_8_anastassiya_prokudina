@@ -9,7 +9,8 @@
         <div class="categories-box">
             {% for choice in choices %}
                 <div class="m-3">
-                    <a href="{% url 'reviewer:category' choice.0 %}" class="btn btn-outline-light btn-lg">{{ choice.1 }}</a>
+                    <a href="{% url 'reviewer:category' choice.0 %}"
+                       class="btn btn-outline-light btn-lg">{{ choice.1 }}</a>
                 </div>
             {% endfor %}
         </div>

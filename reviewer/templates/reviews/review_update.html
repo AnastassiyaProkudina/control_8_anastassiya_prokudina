@@ -4,8 +4,8 @@
     <div class="form-box">
         <h1>Edit</h1>
         <div class="form">
-            <form action="{% url 'review_update' review.id %}" method="post">
-                    {% include 'partial/product_form.html' with button_text='SEND' button_class='btn btn-outline-dark btn-lg' %}
+            <form action="{% url 'reviewer:review_update' review.id %}" method="post">
+                {% include 'partial/product_form.html' with button_text='SEND' button_class='btn btn-outline-dark btn-lg' %}
             </form>
         </div>
     </div>

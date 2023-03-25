@@ -16,17 +16,37 @@
 <header class="header">
     <div class="container">
         <div class="header-inner">
+            <div class="menu col-md-12">
+                <ul>
+                    {% if request.user.is_authenticated %}
+                        <li class="menu-greet"> Привет, {{ user.username }}</li>
+                        <li class="menu-greet">
+                            <form action="{% url 'accounts:logout' %}?next={{ request.get_full_path }}" method="post">
+                                {% csrf_token %}
+                                <input type="submit" class="btn btn-outline-light" value="Выйти">
+                            </form>
+                        </li>
+                    {% else %}
+                        <li class="menu">
+                            <a href="{% url 'accounts:login' %}" class="btn btn-outline-light">Войти</a>
+                            <a href="{% url 'accounts:register' %}" class="btn btn-outline-light">Зарегестрироваться</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+        <div class="header-inner">
             <ul>
                 <li class="menu">
-                    <a href="{% url 'index' %}">
+                    <a href="{% url 'reviewer:index' %}">
                         <iconify-icon icon="fa:home" style="color: #da7b93;"></iconify-icon>
                     </a>
                 </li>
-                {#                {% if request.user.is_authenticated %}#}
-                <li class="menu">
-                    <a href="{% url 'product_create' %}" class="nav-link">Add new</a>
-                </li>
-                {#                {% endif %}#}
+                {% if request.user.is_authenticated %}
+                    <li class="menu">
+                        <a href="{% url 'reviewer:product_create' %}" class="nav-link">Add new</a>
+                    </li>
+                {% endif %}
                 {% block menu %}{% endblock %}
             </ul>
         </div>

@@ -4,7 +4,7 @@
     <div class="form-box">
         <h1>Add new product</h1>
         <div class="form">
-            <form action="{% url 'product_create' %}" method="post">
+            <form action="{% url 'reviewer:product_create' %}" method="post">
                 {% include 'partial/product_form.html' with button_text='Add Product' button_class='btn btn-outline-dark btn-lg' %}
             </form>
         </div>
