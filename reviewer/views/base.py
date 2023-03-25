@@ -1,9 +1,9 @@
-from django.db.models import Q
+from django.db.models import Q, Avg
 from django.utils.http import urlencode
 from django.views.generic import RedirectView, ListView
 
 from reviewer.forms import SimpleSearchForm
-from reviewer.models import Product
+from reviewer.models import Product, Review
 
 
 class IndexView(ListView):
@@ -44,6 +44,8 @@ class IndexView(ListView):
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(object_list=object_list, **kwargs)
         context["form"] = self.form
+        context["products_with_avg"] = Product.objects.filter(reviews__grade__gt=0)\
+            .annotate(avg_grade=Avg("reviews__grade"))
         if self.search_value:
             context["query"] = urlencode({"search": self.search_value})
         return context

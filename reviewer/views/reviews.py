@@ -28,7 +28,7 @@ class ReviewDetailView(DetailView):
     model = Review
 
     def get_success_url(self):
-        return reverse("review_detail", kwargs={"pk": self.object.pk})
+        return reverse("reviewer:review_detail", kwargs={"pk": self.object.pk})
 
 
 class ReviewUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
@@ -38,13 +38,13 @@ class ReviewUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     success_message = "Отзыв обновлен"
 
     def get_success_url(self):
-        return reverse("review_detail", kwargs={"pk": self.object.pk})
+        return reverse("reviewer:review_detail", kwargs={"pk": self.object.pk})
 
 
 class ReviewDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     template_name = "reviews/review_confirm_delete.html"
     model = Review
-    success_url = reverse_lazy("index")
+    success_url = reverse_lazy("reviewer:index")
 
 
 class ReviewConfirmDeleteView(LoginRequiredMixin, SuccessMessageMixin, TemplateView):
@@ -55,4 +55,4 @@ class ReviewConfirmDeleteView(LoginRequiredMixin, SuccessMessageMixin, TemplateV
         context = super().get_context_data(**kwargs)
         context["review"] = get_object_or_404(Review, pk=kwargs["pk"])
         context["review"].delete()
-        return redirect("index")
+        return redirect("reviewer:index")

@@ -3,8 +3,6 @@ from django.db import models
 from django.db.models import TextChoices
 from django.utils import timezone
 
-from reviewer.manager import ProductManager
-
 
 class CategoryChoice(TextChoices):
     OTHER = "other", "Other"
@@ -33,7 +31,8 @@ class Product(models.Model):
         default="No Description",
     )
     image = models.TextField(
-        max_length=2000, null=True, blank=True, verbose_name="Image", default="https://icon-library.com/images/none-icon/none-icon-1.jpg"
+        max_length=2000, null=True, blank=True, verbose_name="Image",
+        default="https://icon-library.com/images/none-icon/none-icon-1.jpg"
     )
     created_at = models.DateTimeField(
         auto_now_add=True, verbose_name="Date and time created"
@@ -48,8 +47,6 @@ class Product(models.Model):
 
     def __str__(self):
         return self.title
-
-    objects = ProductManager()
 
     def delete(self, using=None, keep_parents=False):
         self.is_deleted = True

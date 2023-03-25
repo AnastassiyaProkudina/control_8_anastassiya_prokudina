@@ -3,6 +3,8 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 from django.utils import timezone
 
+from reviewer.manager import ReviewManager
+
 
 class Review(models.Model):
     author = models.ForeignKey(
@@ -27,7 +29,7 @@ class Review(models.Model):
     grade = models.IntegerField(
         null=False,
         blank=False,
-        verbose_name="Balance",
+        verbose_name="Grade",
         validators=[MinValueValidator(0), MaxValueValidator(5)],
         default=None,
     )
@@ -41,6 +43,7 @@ class Review(models.Model):
     deleted_at = models.DateTimeField(
         verbose_name="Date and time deleted at", null=True, default=None
     )
+    objects = ReviewManager()
 
     def __str__(self):
         return self.text[:15]
