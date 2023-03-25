@@ -2,8 +2,7 @@
 {% block title %}Пользователь{% endblock %}
 
 {% block menu %}
-    <li><a href=" {% url 'accounts:change' user_obj.pk %}" class="btn btn-primary">Редактировать</a></li>
-    <li><a href="#" class="btn btn-primary">Смена пароля</a></li>
+    <li><a href="{% url 'accounts:change' user_obj.pk %}" class="btn btn-primary">Редактировать</a></li>
 {% endblock %}
 
 {% block content %}
