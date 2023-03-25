@@ -1,11 +1,10 @@
 from django import forms
 from django.core.exceptions import ValidationError
 
-from reviewer.models import Product
+from reviewer.models import Product, Review
 
 
 class ProductForm(forms.ModelForm):
-
     class Meta:
         model = Product
         fields = ["title", "category", "image", "description"]
@@ -29,3 +28,20 @@ class SimpleSearchForm(forms.Form):
             }
         ),
     )
+
+
+class ReviewForm(forms.ModelForm):
+    class Meta:
+        model = Review
+        fields = [
+            "text",
+            "grade"
+        ]
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["text"].widget.attrs.update({"placeholder": "Добавьте отзыв...", "style": "width: 90%;"})
+        self.fields["grade"].widget.attrs.update({"placeholder": "Введите оценку от 1 до 5"})
+        for visible in self.visible_fields():
+            visible.field.widget.attrs["class"] = "review-box"
+            visible.label = ""

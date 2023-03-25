@@ -8,19 +8,23 @@ from django.views.generic import (
     DeleteView,
 )
 
-from reviewer.forms import ProductForm
-from reviewer.models import Product, CategoryChoice
+from reviewer.forms import ProductForm, ReviewForm
+from reviewer.models import Product, CategoryChoice, Review
 
 
 class ProductDetail(DetailView):
     template_name = "products/product.html"
     model = Product
+    form_class = ReviewForm
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        reviews_ = Review.objects.filter(product_id=self.object.pk, is_deleted=False)
         products = Product.objects.filter(id=self.object.pk)
         context["products"] = products
         context["choices"] = CategoryChoice.choices
+        context["form"] = self.form_class
+        context["reviews"] = reviews_
         return context
 
 

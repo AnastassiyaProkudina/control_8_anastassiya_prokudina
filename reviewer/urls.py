@@ -3,6 +3,7 @@ from django.urls import path
 from reviewer.views.base import IndexView, IndexRedirectView
 from reviewer.views.categories import categories_list, category
 from reviewer.views.products import *
+from reviewer.views.reviews import ReviewCreateView, ReviewDetailView, ReviewDeleteView, ReviewUpdateView
 
 urlpatterns = [
     path("", IndexView.as_view(), name="index"),
@@ -20,20 +21,20 @@ urlpatterns = [
         ProductDeleteView.as_view(),
         name="product_confirm_delete",
     ),
-    # path("product/products_delete", products_delete, name="products_delete"),
     path("category/", categories_list, name="categories_list"),
     path("products/<pk>", category, name="category"),
-    # path("cart/", CartView.as_view(), name="cart_list"),
-    # path(
-    #     "product/<int:pk>/cart/add/",
-    #     ProductCartCreateView.as_view(),
-    #     name="product_cart_add",
-    # ),
-    # path(
-    #     "product/<int:pk>/cart/delete/",
-    #     ProductDeleteFromCartView.as_view(),
-    #     name="products_delete_from_cart",
-    # ),
-    # path("order/<int:pk>", OrderDetailView.as_view(), name="order_detail"),
-    # path("order/create", OrderCreateView.as_view(), name="order_create"),
+    path("product/<int:pk>/review/add", ReviewCreateView.as_view(), name="review_create"),
+    path("review/<pk>", ReviewDetailView.as_view(), name="review_detail"),
+    path(
+        "review/<int:pk>/update/", ReviewUpdateView.as_view(), name="review_update"
+    ),
+    path(
+        "review/<int:pk>/delete/", ReviewDeleteView.as_view(), name="review_delete"
+    ),
+    path(
+        "review/<int:pk>/confirm_delete/",
+        ReviewDeleteView.as_view(),
+        name="review_confirm_delete",
+    ),
+
 ]

@@ -1,0 +1,17 @@
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">Grade: {{ review.grade }}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Author: {{ review.author }}</h6>
+        <p class="card-text">{{ review.text }}</p>
+        {% if footer == 'review' %}
+            <a class="btn btn-light m-1" href="{% url 'review_update' review.id %}" role="button">Edit</a>
+            <a class="btn btn-dark m-1" href="{% url 'review_delete' review.id %}" role="button">Delete</a>
+        {% elif footer == 'delete' %}
+            <form action="{% url 'review_confirm_delete' review.pk %}" method="post" class="form-inline">
+                {% csrf_token %}
+                <input type="submit" class="btn btn-dark" value="Delete">
+                <a href="{% url 'index' %}" class="btn btn-light">Cancel</a>
+            </form>
+        {% endif %}
+    </div>
+</div>

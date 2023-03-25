@@ -22,11 +22,11 @@
                         <iconify-icon icon="fa:home" style="color: #da7b93;"></iconify-icon>
                     </a>
                 </li>
-{#                {% if request.user.is_authenticated %}#}
+                {#                {% if request.user.is_authenticated %}#}
                 <li class="menu">
                     <a href="{% url 'product_create' %}" class="nav-link">Add new</a>
                 </li>
-{#                {% endif %}#}
+                {#                {% endif %}#}
                 {% block menu %}{% endblock %}
             </ul>
         </div>
@@ -35,7 +35,7 @@
 <div class="intro">
     <div class="container">
         <h2 class="title_intro">REVIEWER</h2>
-        <h3 class="text_intro">your opinion is  important</h3>
+        <h3 class="text_intro">your opinion is important</h3>
     </div>
 </div>
 <div class="container">

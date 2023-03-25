@@ -14,6 +14,9 @@
                     <p class="card-small-text">Added at: {{ product.created_at }}</p>
                     <a class="btn btn-light m-1" href="{% url 'product_update' product.id %}" role="button">Edit</a>
                     <a class="btn btn-dark m-1" href="{% url 'product_delete' product.id %}" role="button">Delete</a>
+                    <p class="card-text">Отзывы о данном товаре:</p>
+                    {% include 'partial/reviews_list.html' with style='card-header' %}
+                    {% include 'partial/review_form.html' with style='card-header' %}
                 {% elif footer == 'delete' %}
                     <form action="{% url 'product_confirm_delete' product.pk %}" method="post" class="form-inline">
                         {% csrf_token %}

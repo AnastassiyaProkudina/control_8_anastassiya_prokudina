@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% block menu %}
+    {% include 'partial/product_search_in_menu.html' %}
+{% endblock %}
+{% block content %}
+    <div class="message-box">
+        <p class="msg">{{ message }}</p>
+    </div>
+    <div class="content">
+        <div class="card-group">
+            {% for review in reviews %}
+                {% include 'partial/review_card.html' with footer='review' %}
+            {% endfor %}
+        </div>
+        <div class="paginator-box">
+            {% if is_paginated %}
+                {% include 'partial/pagination.html' %}
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

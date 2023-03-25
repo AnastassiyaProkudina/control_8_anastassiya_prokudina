@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}Review delete{% endblock %}
+{% block menu %}
+{% endblock %}
+{% block content %}
+    <div class="content">
+        <h2 class="delete-text">Are sure to delete this product?</h2>
+        {% include 'partial/review_card.html' with footer='delete' %}
+    </div>
+{% endblock %}
