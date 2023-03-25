@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}product Update{% endblock %}
+{% block content %}
+    <div class="form-box">
+        <h1>Edit</h1>
+        <div class="form">
+            <form action="{% url 'product_update' product.id %}" method="post">
+                {% include 'partial/product_form.html' with button_text='SEND' button_class='btn btn-outline-dark btn-lg' %}
+            </form>
+        </div>
+    </div>
+{% endblock %}
+

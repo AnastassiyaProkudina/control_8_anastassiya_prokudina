@@ -1,0 +1,7 @@
+{% for choice in choices %}
+    {% if choice.0 == product.category %}
+        <div class="{{ style }} border-secondary">
+            <a href="{% url 'category' choice.0 %}" class="card-header-a">{{ choice.1 }}</a>
+        </div>
+    {% endif %}
+{% endfor %}

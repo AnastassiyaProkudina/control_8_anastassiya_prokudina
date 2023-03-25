@@ -1,0 +1,46 @@
+{% load static %}
+{% load django_bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&family=Roboto+Flex:opsz,wght@8..144,300;8..144,400;8..144,500;8..144,600&family=Roboto+Serif:opsz,wght@8..144,100;8..144,300;8..144,400;8..144,500;8..144,700&family=Roboto:ital,wght@0,100;0,500;0,700;1,300&display=swap"
+          rel="stylesheet">
+    <title>{% block title %}Blog{% endblock %}</title>
+</head>
+<body>
+<header class="header">
+    <div class="container">
+        <div class="header-inner">
+            <ul>
+                <li class="menu">
+                    <a href="{% url 'index' %}">
+                        <iconify-icon icon="fa:home" style="color: #da7b93;"></iconify-icon>
+                    </a>
+                </li>
+{#                {% if request.user.is_authenticated %}#}
+                <li class="menu">
+                    <a href="{% url 'product_create' %}" class="nav-link">Add new</a>
+                </li>
+{#                {% endif %}#}
+                {% block menu %}{% endblock %}
+            </ul>
+        </div>
+    </div>
+</header>
+<div class="intro">
+    <div class="container">
+        <h2 class="title_intro">REVIEWER</h2>
+        <h3 class="text_intro">your opinion is  important</h3>
+    </div>
+</div>
+<div class="container">
+    {% block content %}{% endblock %}
+</div>
+<script src="https://code.iconify.design/iconify-icon/1.0.0-beta.3/iconify-icon.min.js"></script>
+</body>
+</html>

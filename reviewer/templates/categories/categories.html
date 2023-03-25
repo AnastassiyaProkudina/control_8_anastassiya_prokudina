@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% block menu %}
+    {% include 'partial/product_search_in_menu.html' %}
+{% endblock %}
+{% block content %}
+    <div class="categories">
+        <p class="line"></p>
+        <div class="categories-box">
+            {% for choice in choices %}
+                <div class="m-3">
+                    <a href="{% url 'reviewer:category' choice.0 %}" class="btn btn-outline-light btn-lg">{{ choice.1 }}</a>
+                </div>
+            {% endfor %}
+        </div>
+        <p class="line"></p>
+        <h5>Select a category</h5>
+    </div>
+{% endblock %}

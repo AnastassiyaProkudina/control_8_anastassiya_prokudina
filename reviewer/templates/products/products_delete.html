@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}Products to Delete{% endblock %}
+{% block content %}
+    <div class="table-box form-box card-shadow">
+        <form action="{% url 'products_delete' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <table class="table">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col" class="th-style">#</th>
+                    <th scope="col" class="th-style">Title</th>
+                    <th scope="col" class="th-style">Category</th>
+                    <th scope="col" class="th-style">Price</th>
+                    <th scope="col" class="th-style">Balance</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for product in products %}
+                    <tr>
+                        <th scope="row">
+                            <label for="check"></label>
+                            <input type="checkbox" name="{{ product.pk }}" id="check">
+                        </th>
+                        <td>{{ product.title }}</td>
+                        <td>{% include 'partial/product_category.html' with style='' %}</td>
+                        <td>{{ product.price }}</td>
+                        <td>{{ product.balance }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <input type="submit" class="btn btn-outline-dark" value="Delete">
+        </form>
+    </div>
+{% endblock %}
+
+
